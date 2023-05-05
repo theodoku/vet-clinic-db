@@ -49,13 +49,9 @@ INSERT INTO vets (name, age, date_of_graduation)
  ('Stephanie Mendez', 64, '1981-05-04'),
  ('Jack Harkness', 38, '2008-06-08');
 
-SELECT id FROM vets WHERE name = 'William Tatcher';
-SELECT id FROM species WHERE name = 'Pokemon';
 INSERT INTO specializations (vet_id, species_id) 
 VALUES (1, 1);
 
-SELECT id FROM vets WHERE name = 'Stephanie Mendez';
-SELECT id FROM species WHERE name IN ('Digimon', 'Pokemon');
 INSERT INTO specializations (vet_id, species_id) VALUES (3, 2);
 INSERT INTO specializations (vet_id, species_id) VALUES (3, 1);
 

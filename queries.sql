@@ -110,14 +110,16 @@ LEFT JOIN specializations AS sp ON v.id = sp.vet_id
 LEFT JOIN species AS s ON sp.species_id = s.id
 ORDER BY v.name ASC;
 
-SELECT a.name as animal_name, v.name as vet_name, vs.name as species_name, vi.visit_date 
+SELECT a.name AS animal_name, v.name AS vet_name, array_agg(vs.name) AS species_names, min(vi.visit_date) AS first_visit_date, max(vi.visit_date) AS last_visit_date
 FROM visits vi
 JOIN animals a ON vi.animal_id = a.id
 JOIN vets v ON vi.vet_id = v.id
 JOIN specializations sp ON sp.vet_id = v.id
 JOIN species vs ON sp.species_id = vs.id
 WHERE v.name = 'Stephanie Mendez' AND vi.visit_date BETWEEN '2020-04-01' AND '2020-08-30'
-ORDER BY vi.visit_date;
+GROUP BY a.name, v.name
+ORDER BY min(vi.visit_date);
+
 
 SELECT a.name AS animal_name, COUNT(v.id) AS num_visits
 FROM animals AS a
@@ -125,6 +127,12 @@ JOIN visits AS v ON a.id = v.animal_id
 GROUP BY a.id
 ORDER BY num_visits DESC
 LIMIT 1;
+
+SELECT id FROM vets WHERE name = 'William Tatcher';
+SELECT id FROM species WHERE name = 'Pokemon';
+
+SELECT id FROM vets WHERE name = 'Stephanie Mendez';
+SELECT id FROM species WHERE name IN ('Digimon', 'Pokemon');
 
 SELECT animals.name,
     MIN(visits.visit_date) AS first_visit_date
@@ -150,12 +158,9 @@ FROM visits
     JOIN specializations ON vets.id = specializations.vet_id
 WHERE specializations.species_id != animals.species_id;
 
-SELECT species.name
+SELECT COUNT(*) AS digimon_count
 FROM visits
 JOIN vets ON visits.vet_id = vets.id
 JOIN animals ON visits.animal_id = animals.id
 JOIN species ON animals.species_id = species.id
-WHERE vets.name = 'Maisy Smith'
-GROUP BY species.name
-ORDER BY COUNT(*) DESC
-LIMIT 1;
+WHERE vets.name = 'Maisy Smith' AND species.name = 'Digimon';
