@@ -91,3 +91,76 @@ SELECT owners.full_name, COUNT(animals.id) AS num_animals
  GROUP BY owners.id
  ORDER BY num_animals DESC
 LIMIT 1;
+
+SELECT a.name AS animal_name, v.visit_date
+ FROM visits v
+ JOIN animals a ON v.animal_id = a.id
+ JOIN vets vt ON v.vet_id = vt.id
+ WHERE vt.name = 'William Tatcher'
+ ORDER BY v.visit_date DESC
+LIMIT 1;
+
+SELECT COUNT(DISTINCT animal_id)
+ FROM visits
+WHERE vet_id = (SELECT id FROM vets WHERE name = 'Stephanie Mendez');
+
+SELECT v.name AS vet_name, s.name AS specialty_name 
+FROM vets AS v
+LEFT JOIN specializations AS sp ON v.id = sp.vet_id
+LEFT JOIN species AS s ON sp.species_id = s.id
+ORDER BY v.name ASC;
+
+SELECT a.name AS animal_name, v.name AS vet_name, array_agg(vs.name) AS species_names, min(vi.visit_date) AS first_visit_date, max(vi.visit_date) AS last_visit_date
+FROM visits vi
+JOIN animals a ON vi.animal_id = a.id
+JOIN vets v ON vi.vet_id = v.id
+JOIN specializations sp ON sp.vet_id = v.id
+JOIN species vs ON sp.species_id = vs.id
+WHERE v.name = 'Stephanie Mendez' AND vi.visit_date BETWEEN '2020-04-01' AND '2020-08-30'
+GROUP BY a.name, v.name
+ORDER BY min(vi.visit_date);
+
+
+SELECT a.name AS animal_name, COUNT(v.id) AS num_visits
+FROM animals AS a
+JOIN visits AS v ON a.id = v.animal_id
+GROUP BY a.id
+ORDER BY num_visits DESC
+LIMIT 1;
+
+SELECT id FROM vets WHERE name = 'William Tatcher';
+SELECT id FROM species WHERE name = 'Pokemon';
+
+SELECT id FROM vets WHERE name = 'Stephanie Mendez';
+SELECT id FROM species WHERE name IN ('Digimon', 'Pokemon');
+
+SELECT animals.name,
+    MIN(visits.visit_date) AS first_visit_date
+FROM animals
+    JOIN visits ON animals.id = visits.animal_id
+    JOIN vets ON visits.vet_id = vets.id
+WHERE vets.name = 'Maisy Smith'
+GROUP BY animals.name
+ORDER BY first_visit_date ASC
+LIMIT 1;
+
+SELECT a.name AS animal_name, v.name AS vet_name, visits.visit_date
+FROM visits
+JOIN animals a ON a.id = visits.animal_id
+JOIN vets v ON v.id = visits.vet_id
+ORDER BY visits.visit_date DESC
+LIMIT 1;
+
+SELECT COUNT(*)
+FROM visits
+    JOIN vets ON visits.vet_id = vets.id
+    JOIN animals ON visits.animal_id = animals.id
+    JOIN specializations ON vets.id = specializations.vet_id
+WHERE specializations.species_id != animals.species_id;
+
+SELECT COUNT(*) AS digimon_count
+FROM visits
+JOIN vets ON visits.vet_id = vets.id
+JOIN animals ON visits.animal_id = animals.id
+JOIN species ON animals.species_id = species.id
+WHERE vets.name = 'Maisy Smith' AND species.name = 'Digimon';

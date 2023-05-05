@@ -88,14 +88,13 @@ Clone this repository to your desired folder:
 - Twitter: [@twitterhandle](https://twitter.com/dok_theo)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/theophilus-doku/)
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- N/A
+Add more queries or More complex tables relationships etc
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -113,7 +112,7 @@ Feel free to check the [issues page](https://github.com/theodoku/vet-clinic-db/i
 
 ## ⭐️ Show your support <a name="support"></a>
 
-If you like this project...
+Give a ⭐️, if you like this project!
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
