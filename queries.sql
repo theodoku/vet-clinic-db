@@ -164,3 +164,8 @@ JOIN vets ON visits.vet_id = vets.id
 JOIN animals ON visits.animal_id = animals.id
 JOIN species ON animals.species_id = species.id
 WHERE vets.name = 'Maisy Smith' AND species.name = 'Digimon';
+
+-- QUERIES FOR IMPROVING PERFORMANCE
+EXPLAIN ANALYZE SELECT COUNT(animal_id) FROM visits WHERE animal_id = 4;
+EXPLAIN ANALYZE SELECT visit_date, animal_id FROM visits WHERE vet_id = 2;
+EXPLAIN ANALYZE SELECT full_name,age  FROM owners WHERE email = 'owner_18327@mail.com';
