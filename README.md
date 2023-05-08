@@ -88,6 +88,12 @@ Clone this repository to your desired folder:
 - Twitter: [@twitterhandle](https://twitter.com/dok_theo)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/theophilus-doku/)
 
+👤 **Lornakaboro**
+
+- GitHub: [@githubhandle](https://github.com/Lornakaboro)
+- Twitter: [@twitterhandle](https://twitter.com/KaboroLorna)
+- Linkedin [@linkedinprofile](https://www.linkedin.com/in/lorna-kaboro-23620b242/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
