@@ -49,7 +49,7 @@ Vet Clinic Database is relational database creates initial data structure for a 
 ### Schema Diagram <a name="key-features"></a>
 
 - This is a screenshot of the schema diagram showing the relationship betweeen the tables
-<img src = "Schema-diagram.png"/>
+<img src = "./Schema-diagram.PNG" alt = "schema-diagram"/>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
